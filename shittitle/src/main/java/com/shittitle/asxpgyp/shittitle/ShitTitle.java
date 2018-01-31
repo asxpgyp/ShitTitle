@@ -23,7 +23,7 @@ public class ShitTitle extends LinearLayout {
     private String title;
     private int textColor, leftImgResourceId, backgroungResourceId, rightImgResourceId;
     private LinearLayout back_ground;
-    private boolean leftGone, rightGone;
+    private boolean leftGone, rightGone, leftFinish;
     private float titleHeight, titleSize;
 
     public ShitTitle(Context context, AttributeSet attrs) {
@@ -69,32 +69,27 @@ public class ShitTitle extends LinearLayout {
         backgroungResourceId = typedArray.getResourceId(R.styleable.ShitTitle_background, R.mipmap.test);
         rightImgResourceId = typedArray.getResourceId(R.styleable.ShitTitle_rightImg, R.mipmap.ic_launcher);
         leftGone = typedArray.getBoolean(R.styleable.ShitTitle_leftGone, false);
-        rightGone = typedArray.getBoolean(R.styleable.ShitTitle_rightGone, false);
+        rightGone = typedArray.getBoolean(R.styleable.ShitTitle_rightGone, true);
+        leftFinish = typedArray.getBoolean(R.styleable.ShitTitle_leftFinish, true);
         typedArray.recycle();
 
     }
 
     public void setLeftFinish(final Activity activity) {
-        left_img.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.finish();
-            }
-        });
+        if (leftFinish) {
+            left_img.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    activity.finish();
+                }
+            });
+        }
     }
 
     public void setLeftListenter(OnClickListener listener) {
         left_img.setOnClickListener(listener);
     }
 
-    public void setRightFinish(final Activity activity) {
-        right_img.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.finish();
-            }
-        });
-    }
 
     public void setRightListenter(OnClickListener listener) {
         right_img.setOnClickListener(listener);

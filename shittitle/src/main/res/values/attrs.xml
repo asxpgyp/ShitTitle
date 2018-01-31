@@ -7,6 +7,7 @@
         <attr name="titleColor" format="color" />//标题颜色
         <attr name="titleSize" format="dimension" />//标题大小
         <attr name="leftImg" format="reference" />//左边图片
+        <attr name="leftFinish" format="boolean" />//点击返回
         <attr name="background" format="reference" />//大背景
         <attr name="rightImg" format="reference" />//右边图片
         <attr name="leftGone" format="boolean" />//左边图片隐藏

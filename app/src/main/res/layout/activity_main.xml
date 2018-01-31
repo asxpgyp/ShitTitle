@@ -7,12 +7,13 @@
     tools:context="com.shittitle.asxpgyp.MainActivity">
 
     <com.shittitle.asxpgyp.shittitle.ShitTitle
+        android:id="@+id/shit_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         app:background="@mipmap/test"
-        app:leftImg="@mipmap/ic_launcher"
-        app:rightGone="true"
+        app:leftImg="@mipmap/ic_launcher_round"
+        app:rightGone="false"
+        app:rightImg="@mipmap/ic_launcher_round"
         app:titleColor="@color/colorAccent"
         app:titleHeight="60dp"
         app:titleText="这是标题" />

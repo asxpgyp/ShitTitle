@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,8 +20,8 @@ public class ShitTitle extends LinearLayout {
     private TextView title_text;
     private ImageView left_img, right_img;
     private String title;
-    private int textColor, leftImgResourceId, backgroungResourceId, rightImgResourceId;
     private LinearLayout back_ground;
+    private int textColor, leftImgResourceId, backgroungResourceId, rightImgResourceId;
     private boolean leftGone, rightGone, leftFinish;
     private float titleHeight, titleSize;
 
@@ -30,6 +29,55 @@ public class ShitTitle extends LinearLayout {
         super(context, attrs);
         this.context = context;
         init(attrs);
+    }
+
+    public ShitTitle setTextColor(int textColor) {
+        this.textColor = textColor;
+        return this;
+    }
+
+    public ShitTitle setLeftImgResourceId(int leftImgResourceId) {
+        this.leftImgResourceId = leftImgResourceId;
+        return this;
+    }
+
+    public ShitTitle setBackgroungResourceId(int backgroungResourceId) {
+        this.backgroungResourceId = backgroungResourceId;
+        return this;
+    }
+
+    public ShitTitle setRightImgResourceId(int rightImgResourceId) {
+        this.rightImgResourceId = rightImgResourceId;
+        return this;
+    }
+
+    public ShitTitle setLeftGone(boolean leftGone) {
+        this.leftGone = leftGone;
+        return this;
+    }
+
+    public ShitTitle setRightGone(boolean rightGone) {
+        this.rightGone = rightGone;
+        return this;
+    }
+
+    public ShitTitle setLeftFinish(boolean leftFinish) {
+        this.leftFinish = leftFinish;
+        return this;
+    }
+
+    public ShitTitle setTitleHeight(float titleHeight) {
+        this.titleHeight = titleHeight;
+        return this;
+    }
+
+    public ShitTitle setTitleSize(float titleSize) {
+        this.titleSize = titleSize;
+        return this;
+    }
+
+    public void build() {
+        onFinishInflate();
     }
 
     @Override
@@ -45,7 +93,7 @@ public class ShitTitle extends LinearLayout {
         left_img.setImageResource(leftImgResourceId);
         back_ground = root.findViewById(R.id.back_ground);
         LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) back_ground.getLayoutParams(); //取控件textView当前的布局参数 linearParams.height = 20;// 控件的高强制设成20
-        linearParams.height = (int) titleHeight;// 控件的宽强制设成30
+        linearParams.height = (int) titleHeight;
         back_ground.setLayoutParams(linearParams);
         back_ground.setBackgroundResource(backgroungResourceId);
         right_img = root.findViewById(R.id.right_img);
@@ -75,7 +123,7 @@ public class ShitTitle extends LinearLayout {
 
     }
 
-    public void setLeftFinish(final Activity activity) {
+    public ShitTitle setLeftFinish(final Activity activity) {
         if (leftFinish) {
             left_img.setOnClickListener(new OnClickListener() {
                 @Override
@@ -84,6 +132,7 @@ public class ShitTitle extends LinearLayout {
                 }
             });
         }
+        return this;
     }
 
     public void setLeftListenter(OnClickListener listener) {
